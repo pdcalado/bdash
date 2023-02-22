@@ -46,17 +46,19 @@ const Routed = () => {
         targetUrl: loc.pathname + loc.hash + loc.search,
       },
     });
-  }, [isAuthenticated, loginWithRedirect, isLoading, getAccessTokenSilently, hasToken]);
-
-  if (hasToken) {
-    return <Dashboard />;
-  }
+  }, [
+    isAuthenticated,
+    loginWithRedirect,
+    isLoading,
+    getAccessTokenSilently,
+    hasToken,
+  ]);
 
   if (error) {
     return <div>Auth failed... {error.message}</div>;
   }
 
-  if (isLoading || !isAuthenticated) {
+  if (!hasToken) {
     return <Loading />;
   }
 
