@@ -53,7 +53,6 @@ const Wrapper = ({
       setFetchState({ loading: true, done: false });
       getter
         .get(process.env.REACT_APP_BLOCK_URL_PATH + path_url)
-        .then((response) => response.text())
         .then((text) => {
           setResponse(text);
           setFetchState({ loading: false, done: true });
@@ -89,7 +88,7 @@ export const makeBlocks = (blocks: Block[]): Grid => {
       y: props.y || 0,
       w: props.width || 1,
       h: props.height || 1,
-      static: props.static || false,
+      static: props.static === undefined || props.static === null || props.static,
     };
   });
 

@@ -28,12 +28,12 @@ const Dashboard = () => {
 
       getter
         .get(process.env.REACT_APP_CONFIG_URL_PATH!)
-        .then((response) => response.json())
-        .catch((error) => console.error(error))
-        .then((json) => {
+        .then((response) => {
+          const json = JSON.parse(response);
           setBlocks(json.blocks);
           setFetchState({ loading: false, done: true });
-        });
+        })
+        .catch((error) => console.error(error));
     }
   }, [fetchState]);
 
