@@ -1,0 +1,5 @@
+REACT_APP_CONFIG_URL_PATH=/prefix/config
+REACT_APP_BLOCK_URL_PATH=/prefix
+REACT_APP_AUTH0_AUDIENCE=https://none.non
+REACT_APP_VERSION=$npm_package_version
+REACT_APP_DEMO=true

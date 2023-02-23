@@ -76,7 +76,7 @@ function App() {
           audience: process.env.REACT_APP_AUTH0_AUDIENCE!,
         }}
       >
-        <Routed />
+        {process.env.REACT_APP_DEMO ? <Dashboard /> : <Routed />}
       </Auth0Provider>
     </ErrorBoundary>
   );
