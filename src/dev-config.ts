@@ -2,10 +2,9 @@ const data = {
   "/config": {
     blocks: [
       {
-        kind: "titleSubtitle",
+        kind: "welcome",
         props: {
           title: "Bdash",
-          subtitle: "Welcome",
         },
         background_color: "darkslategray",
         width: 12,
