@@ -80,4 +80,3 @@ jobs:
           accountId: dbf4b578e0652f97f2efe6a72ec622be
           projectName: bdash-demo
           directory: ./build
-          #gitHubToken: ${{ secrets.GITHUB_TOKEN }}
