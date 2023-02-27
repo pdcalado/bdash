@@ -12,7 +12,7 @@ I just needed a very simple setup, which supports an auth backend that I already
 
 ## Demo
 
-A **[demo is running here](bdash-demo.pages.dev)**, auth is disabled and [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) is used as data source, instead of an actual HTTP backend.
+A **[demo is running here](https://bdash-demo.pages.dev)**, auth is disabled and [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) is used as data source, instead of an actual HTTP backend.
 
 ## Build
 
