@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { truncate } from "utils";
+import { truncate, TimeSince } from "utils";
 
 const Block = styled.div`
   display: flex;
@@ -10,7 +10,6 @@ const Block = styled.div`
 
 const Title = styled.div`
   font-size: 18px;
-  color: white;
   text-align: center;
 `;
 
@@ -23,33 +22,50 @@ const Info = styled.div`
 
 const Number = styled.span`
   font-size: 24px;
-  color: white;
   margin-right: 8px;
 `;
 
 const Icon = styled.span`
   font-size: 36px;
-  color: white;
 `;
+
+type BlockData = {
+  number: string;
+  ts: string | number;
+};
 
 const TitleNumberIcon = ({
   title,
   value,
   icon,
+  object,
   response,
 }: {
   title: string;
   value: string;
   icon: string;
+  object: boolean;
   response?: string;
-}) => (
-  <Block>
-    <Title>{title}</Title>
-    <Info>
-      <Number>{truncate(response || value, 15)}</Number>
-      <Icon>{icon}</Icon>
-    </Info>
-  </Block>
-);
+}) => {
+  const number: string | undefined =
+    response && object
+      ? (JSON.parse(response) as BlockData)?.number
+      : (response as string);
+  const ts: number =
+    response && object
+      ? new Date((JSON.parse(response) as BlockData).ts).getTime()
+      : 0;
+
+  return (
+    <Block>
+      <Title>{title}</Title>
+      <Info>
+        <Number>{truncate(number || value, 15)}</Number>
+        <Icon>{icon}</Icon>
+      </Info>
+      {ts > 0 && <TimeSince timestamp={ts} />}
+    </Block>
+  );
+};
 
 export default TitleNumberIcon;
