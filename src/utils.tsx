@@ -1,4 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
+import styled from "styled-components";
 
 export type FetchState = {
   loading: boolean;
@@ -23,6 +24,12 @@ export const isTokenExpired = (token: string): boolean => {
   } catch (e) {
     return false;
   }
+};
+
+const formatDuration = (duration: number) => {
+  const hours = Math.floor(duration / (1000 * 60 * 60));
+  const minutes = Math.floor((duration / (1000 * 60)) % 60);
+  return `${hours}h ${minutes}m`;
 };
 
 interface Props {
@@ -55,3 +62,20 @@ export class ErrorBoundary extends Component<Props, State> {
     return this.props.children;
   }
 }
+
+const TimeSinceLabel = styled.div`
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 14px;
+  color: inherit;
+`;
+
+export const TimeSince = ({ timestamp }: { timestamp: string | number }) => {
+  const now = new Date();
+  const then = new Date(timestamp);
+  const duration = now.getTime() - then.getTime();
+  const durationText = formatDuration(duration);
+
+  return <TimeSinceLabel>since {durationText} ago</TimeSinceLabel>;
+};
