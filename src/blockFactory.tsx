@@ -34,6 +34,7 @@ const setImportantOrInherit = (value?: string) => {
 const StyledDiv = styled.div<StyledDivProps>`
   background-color: ${(props) => setImportantOrInherit(props.background_color)};
   color: ${(props) => setImportantOrInherit(props.color)};
+  display: grid;
 `;
 
 const Wrapper = ({
@@ -88,7 +89,8 @@ export const makeBlocks = (blocks: Block[]): Grid => {
       y: props.y || 0,
       w: props.width || 1,
       h: props.height || 1,
-      static: props.static === undefined || props.static === null || props.static,
+      static:
+        props.static === undefined || props.static === null || props.static,
     };
   });
 
